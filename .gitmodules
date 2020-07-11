@@ -1,0 +1,3 @@
+[submodule "Wes"]
+	path = Wes
+	url = git@github.com:barslann/TheOdinProject.git
