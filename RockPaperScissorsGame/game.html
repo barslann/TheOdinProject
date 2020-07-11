@@ -1,1 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock Paper Scissors Game</title>
+</head>
+<body>
+	<h1>Game is playing from the console!</h1>
 
+	<script type="text/javascript">
+	function playRound(playerSelection, computerSelection) {
+	    let computerSelection1 = computerSelection.toLowerCase();
+	    console.log(`Computer Selection is : ${computerSelection1}`); 
+	    playerSelection = playerSelection.toLowerCase();
+	    console.log(`Player Selection is : ${playerSelection}`);
+		if(computerSelection1 == 'rock'){
+	        if(playerSelection == 'rock') return 'Tie';
+	        if(playerSelection == 'paper') return 'You Won!Paper beats Rock';
+	        if(playerSelection == 'scissors') return 'You Lose!Rock beats Scissors';
+	    }
+	    if(computerSelection1 == 'paper'){
+	        if(playerSelection == 'paper') return 'Tie';
+	        if(playerSelection == 'rock') return 'You Lose!Paper beats Rock';
+	        if(playerSelection == 'scissors') return 'You Won!Scissors beats Paper';
+	    }
+	    if(computerSelection1 == 'scissors'){
+	        if(playerSelection == 'scissors') return 'Tie';
+	        if(playerSelection == 'paper') return 'You Lose!Scissors beats Paper';
+	        if(playerSelection == 'rock') return 'You Won!Rock beats Scissors';
+	    }
+	}
+
+
+	function game(){   
+	    let playerCount=0;
+	    let computerCount=0;
+	    for (let i = 0; i < 5; i++) {
+	      let playerSelection = prompt('Select rock or scissors or paper');
+	      let computerSelection = computerPlay();
+	      if(playRound(playerSelection, computerSelection).search('Won') != -1){
+	          playerCount++;
+	        }else if(playRound(playerSelection, computerSelection).search('Lose') != -1){
+	            computerCount++;
+	        }
+	    } 
+	    console.log(playerCount);
+	    console.log(computerCount);
+	    console.log(computerCount > playerCount ?  'Computer Won!' : (playerCount > computerCount) ?  'Player Won!' : 'Berabere');
+	}
+
+
+	function computerPlay(){
+    	let randomNumber = Math.floor((Math.random() * 3) + 1); 
+    	return randomNumber  == 1 ? 'Rock' : (randomNumber == 2) ? 'Paper' : 'Scissors'; 
+	}
+	</script>
+</body>
+</html>
